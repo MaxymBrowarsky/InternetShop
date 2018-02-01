@@ -16,7 +16,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .navbar>.container>.navbar-brand>span {
- 				margin-top: 8px;
- }
+
+.brand-text {
+	font-size: 32px;
+}	
+.navbar_brand {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
  		
