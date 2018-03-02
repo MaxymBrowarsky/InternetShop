@@ -1,0 +1,44 @@
+<div class="row">
+<div class="col-md-8">
+	<% @products.each do |product| %>
+		<div class="row productRow">
+			<div class="col-md-4">
+				<%= image_tag(product.img.thumb.url, alt: 'Image') if product.img? %>
+			</div>
+			<div class="col-md-8 productDesc">
+				<div class="productText">
+				
+					
+
+					<h3 class = "productTitle"> <%= product.name %> </h3>
+
+				</div>
+				<p class = "productDescription"> <%= product.description %> </p>
+				<div class="row bottomLine">
+					<% if product.amount > 0 %>
+					
+						<span class = "productPrice text-center"> Ціна: <%= number_to_currency(product.price) %> </span>
+						<div class="productForm">
+							<%= button_to "Додати до корзини", cart_items_path(product_id: product) %> 
+						</div>
+					<% else %>
+						<span> Товар відсутній </span>
+					
+					
+					<% end %>
+				</div>
+				
+			</div>
+		</div>
+		
+	<% end %>
+<%= will_paginate @products, :previous_label => t("Попередня"), :next_label => t("Наступна") %>
+</div>
+<div class="col-md-4">
+	<%= render @cart %>
+</div>
+</div>
+
+<%= link_to 'Новий товар' , new_product_path %>
+<%= link_to 'Нова категорія', new_category_path %>
+

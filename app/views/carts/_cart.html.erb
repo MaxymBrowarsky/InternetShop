@@ -1,0 +1,15 @@
+
+<h2>Ваша корзина</h2>
+<table>
+<%= render(cart.cart_items) %>
+<tr class="total_line">
+<td colspan="2">Всього </td>
+<td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+</tr>
+</table>
+<% if cart.cart_items.count > 0 %>
+<%= button_to 'Очистити корзину', cart, method: :delete,
+data: { confirm: 'Ви хочете очистити корзину?' } %>
+<%= link_to 'Оформити замовлення', new_order_path, class: 'btn btn-default' %>
+<% end %>
+

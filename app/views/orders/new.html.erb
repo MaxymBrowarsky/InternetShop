@@ -1,0 +1,29 @@
+<div class="col-md-6">
+<%= form_for @order do |f| %>
+<%= f.hidden_field(:user_id, :value => "#{current_user.id}") %>
+<%= f.hidden_field(:total_price, :value => "#{@cart.total_price}") %>
+
+<div class="field">
+	<%= f.label :name, "Ім'я" %>
+	<br>
+	<%= f.text_field :name %>
+</div>
+<div class="field">
+	<%= f.label :surname, "Прізвище" %>
+	<br>
+	<%= f.text_field :surname %>
+</div>
+
+<div class="field">
+	<%= f.label :address, "Адреса" %>
+	<br>
+	<%= f.text_field :address %>
+</div>
+<div class="field">
+	<%= button_to "Оформити замовлення", orders_path %>
+</div>
+<% end %>
+</div>
+<div class="col-md-6">
+	
+</div>

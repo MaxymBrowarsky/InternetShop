@@ -1,0 +1,46 @@
+
+
+<div class="navbar navbar-inverse ">
+	<div class="container	">
+	 	<div class="col-md-4">
+			<div class="navbar-header">
+				<%= link_to root_path, :class => "navbar_brand" do %>
+					<span class="brand-text">Інтернет магазин</span>
+					<!--<%= image_tag("icon.png", :alt => "brand_image") %> 		-->	
+				<% end %>
+			</div>
+			
+		</div> 
+		<div class="col-md-4 categorySelect">
+			<% categories = Category.all.map{ |category| [category.category, category.id] } %>
+			<%= form_tag root_path, :method => :get, class: 'category' do %>
+			<%= select_tag 'set_category', options_for_select(categories, @category),:include_blank => 'Всі категорії', onchange: 'this.form.submit()' %>
+			<% end %>
+			
+		</div>
+		<div class="col-md-4">
+			<ul class="nav navbar-nav">
+				<% if user_signed_in? %>
+					<li>
+						<%= link_to "Замовлення", user_path(current_user.id) %>
+					</li>
+					
+					<li>
+						<%= link_to "Вийти", destroy_user_session_path, method: :delete %>
+					</li>
+					
+				<% else %>
+				<li>
+						<%= link_to "Увійти", new_user_session_path %>
+						
+					</li>
+					<li>
+					<%= link_to "Реєстарція", new_user_registration_path %>
+					
+					</li>
+					
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>

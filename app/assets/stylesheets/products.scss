@@ -1,0 +1,46 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.productImg {
+	display: inline-block;
+}
+.productText {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+.productTitle {
+	display: inline-block;
+	
+}
+.productPrice {
+	display: inline-block;
+	margin-left: 20px;
+	
+}
+.productForm {
+	display: inline-block;
+	float: right;
+	
+}
+.producttitle {
+	text-align: center;
+}
+.bottomLine {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+.productDesc {
+	height: 100%;
+}
+.productRow {
+	height: 180px;
+	position: relative;
+}
+.productDescription {
+	margin-left: 5px;
+	text-indent: 20px;
+	overflow-x:hidden;
+
+}

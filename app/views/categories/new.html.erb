@@ -1,0 +1,10 @@
+<%= form_for @category, url: {action: "create"} do |f| %>
+<div class="field">
+	<%= f.label :category, "Назва категорії" %>
+	<br>
+	<%= f.text_field :category %>
+</div>
+<div class="field">
+	<%= f.submit "Створити", class: "btn btn-large btn-primary" %>
+</div>
+<% end %>

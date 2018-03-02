@@ -1,0 +1,59 @@
+<!-- <div class="col-md-6">
+<table width = 100%>
+	<tr>
+		<td>
+			Ім'я
+		</td>
+		<td>
+			Адреса
+		</td>
+		<td>
+			Сума замовлення			
+		</td>
+	</tr>
+<% @user.orders.each do |order| %>
+	<tr>
+		<td>
+			<%= order.surname + ' ' + order.name %>
+		</td>
+		<td>
+			<%= order.address %>
+		</td>
+		<td>
+			<%= order.total_price %>
+		</td>
+		<td>
+			<button class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls=<%= 'order' + "#{order.id}" %> data-target = <%= '#order' + "#{order.id}" %>>
+				Переглянути
+			</button>
+		</td>
+	</tr>
+	
+	<tr class = "collapse multi-collapse" id = <%= 'order' + "#{order.id}" %>>
+		<td colspan = '4'>
+			<%= render(order.cart_items) %>
+			
+		</td>
+	</tr>
+<% end %>
+</table>
+</div> -->
+<div class="accordion">
+	<% @user.orders.each do |order| %>
+		<div class="card">
+    <div class="card-header" id= <%= 'heading' + "#{order.id}" %>>
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target=<%= '#order' + "#{order.id}" %> aria-expanded="true" aria-controls=<%= 'order' + "#{order.id}" %>>
+          <%= order.name + ' ' + order.surname + ' ' + order.created_at.strftime("%Y-%m-%d %H-%m") %>
+        </button>
+      </h5>
+    </div>
+
+    <div id=<%= 'order' + "#{order.id}" %> class="collapse" aria-labelledby=<%= 'heading' + "#{order.id}" %> data-parent="#accordion">
+      <div class="card-body">
+        	<%= render(order.cart_items) %>
+        </div>
+    </div>
+  </div>
+	<% end %>
+</div>
