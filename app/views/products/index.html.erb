@@ -38,7 +38,8 @@
 	<%= render @cart %>
 </div>
 </div>
-
-<%= link_to 'Новий товар' , new_product_path %>
-<%= link_to 'Нова категорія', new_category_path %>
+<% if current_user.admin? %>
+	<%= link_to 'Новий товар' , new_product_path %>
+	<%= link_to 'Нова категорія', new_category_path %>
+<% end %>
 
