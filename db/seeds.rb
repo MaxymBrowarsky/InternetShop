@@ -25,8 +25,8 @@ category_list.each do |category|
 	Category.create( category: category)
 end
 
-product_list.each do |name, category_id, price, desc, img, amount|
-	Product.create( name: name, category_id: category_id, price: price, description: desc, img: img, amount: amount)
+product_list.each do |name, category_id, price, description, img, amount|
+	Product.create( name: name, category_id: category_id, price: price, description: description, img: img, amount: amount)
 end
 
 User.create( email: "admin@email.com", password: "password", admin: true)
