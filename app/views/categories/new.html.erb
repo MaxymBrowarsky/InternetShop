@@ -1,4 +1,15 @@
 <%= form_for @category, url: {action: "create"} do |f| %>
+<% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @category.errors.count, " Помилки" %> :</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="field">
 	<%= f.label :category, "Назва категорії" %>
 	<br>

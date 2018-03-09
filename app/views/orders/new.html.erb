@@ -1,5 +1,16 @@
 <div class="col-md-6">
 <%= form_for @order do |f| %>
+<% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @order.errors.count + " помилки." %> </h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <%= f.hidden_field(:user_id, :value => "#{current_user.id}") %>
 <%= f.hidden_field(:total_price, :value => "#{@cart.total_price}") %>
 
@@ -20,7 +31,7 @@
 	<%= f.text_field :address %>
 </div>
 <div class="field">
-	<%= button_to "Оформити замовлення", orders_path %>
+	<%= button_to "Оформити замовлення", orders_path, class: "btn btn-large btn-primary" %>
 </div>
 <% end %>
 </div>

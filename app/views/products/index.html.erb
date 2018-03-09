@@ -3,7 +3,16 @@
 	<% @products.each do |product| %>
 		<div class="row productRow">
 			<div class="col-md-4">
-				<%= image_tag(product.img.thumb.url, alt: 'Image') if product.img? %>
+					
+				
+				<% if product.img.file == nil %>
+				
+					
+					<%= image_tag('Product3.png', alt: 'Default_Image') %>
+				<% else %>
+					<%= image_tag(product.img.thumb.url, alt: 'asdfImage') %>
+					
+				<% end %>
 			</div>
 			<div class="col-md-8 productDesc">
 				<div class="productText">
@@ -22,7 +31,7 @@
 							<%= button_to "Додати до корзини", cart_items_path(product_id: product) %> 
 						</div>
 					<% else %>
-						<span> Товар відсутній </span>
+						<span class = "productPrice"> Товар відсутній </span>
 					
 					
 					<% end %>
@@ -38,7 +47,7 @@
 	<%= render @cart %>
 </div>
 </div>
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
 	<%= link_to 'Новий товар' , new_product_path %>
 	<%= link_to 'Нова категорія', new_category_path %>
 <% end %>

@@ -1,4 +1,15 @@
 <%= form_for @product, url: {action: "create"} do |f| %>
+<% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @product.errors.count, " помилки") %></h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 	<div class="field">
 	<%= f.label :category %>
 	</br>
